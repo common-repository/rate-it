@@ -1,0 +1,57 @@
+So you wanna know how to use this plugin do ya?  Good.
+
+First things first, you need to check out my site:
+http://www.chrisjdavis.org/2004/12/06/2004-weblog-awards/
+
+That post has a rating of 50 so it has a heart icon by the title.  
+
+The heart is this plugin in action.  
+
+
+
+Setting up the plugin
+-----------------------
+
+There are two files needed for this plugin to work, cjd_rate_it.php which is the plugin file and admin-rate.php.
+
+To install this plugin drop cjd_rate_it.php in your wp-content/plugins/ directory and drop admin-rate.php in your site root (wherever wp-blog-header.php is).
+
+Activate the plugin, and you are ready to add the rating system to your site.
+
+
+
+Adding the rating system
+--------------------------
+
+There are 2 functions that power the rating system that need to be added to your WordPress theme templates:
+
+<?php rating_icon($post->ID); ?>
+This is the function that displays the icon if there is one.
+
+<?php if_admin($post->ID); ?>
+This shows the admin rate controls, so you can rate your own posts.
+
+You need to add the functions exactly as I have them listed here, and once you do that you should be good.
+
+As an example, I have the functions set up like this:
+
+<?php the_title(); ?> <?php rating_icon($post->ID); ?> <?php if_admin($post->ID); ?>
+
+This give me: 
+
+[My Great Post title] [Icon - (if there is one)] [1/10/30 - (admin rate tool)]
+
+You can of course put the functions where ever you would like, I just think this placement makes the most sense.
+
+
+
+Adding the raiting system outside the loop
+-------------------------------------------
+
+This plugin has the ability to be used outside of the_loop(), for instance if you are running SRG Nice Archives from Shawn Grimes (http://www.hexfactor.com/2005/04/28/clean-archives-plug-in/) and would like to have the rating system there, making it very easy to rate older posts you would need to slightly modify the tags like so:
+
+<?php rating_icon($arcresult2->ID); ?> <?php if_admin($arcresult2->ID); ?>
+
+I will add more examples to this documentation as I releaase updates and gather more implementation information from users.
+
+Cheers.
